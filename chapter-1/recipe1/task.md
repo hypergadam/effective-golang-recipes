@@ -1,0 +1,2 @@
+## Task
+You're working on the backend for a ride-sharing site. The backend is composed of several processes that communicate with each other. The exusting implementation has code to serialize data, but it works with `io.Reader` and `io.Writer`. You want to explore shared memory as a medium to exchange data, and in shared memory you need to work with `[]byte`
