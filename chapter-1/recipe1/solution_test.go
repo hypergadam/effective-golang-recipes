@@ -1,4 +1,4 @@
-package recipe1
+package main
 
 import (
 	"errors"

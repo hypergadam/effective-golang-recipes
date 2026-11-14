@@ -1,0 +1,35 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task --list
+
+  run:
+    desc: Run a recipe (defaults to chapter 1, recipe 1)
+    vars:
+      CHAPTER: '{{.CHAPTER | default "1"}}'
+      RECIPE: '{{.RECIPE | default "1"}}'
+    cmds:
+      - go run "./chapter-{{.CHAPTER}}/recipe{{.RECIPE}}"
+
+  test:
+    desc: Run all tests
+    cmds:
+      - go test ./...
+
+  fmt:
+    desc: Format Go code
+    cmds:
+      - go fmt ./...
+
+  vet:
+    desc: Check for suspicious Go code
+    cmds:
+      - go vet ./...
+
+  check:
+    desc: Run tests and static checks
+    cmds:
+      - task: test
+      - task: vet
