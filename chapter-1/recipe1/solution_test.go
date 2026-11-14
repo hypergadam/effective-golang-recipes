@@ -32,6 +32,7 @@ func TestRideRoundTrip(t *testing.T) {
 
 func TestUnmarshalRideInvalidInput(t *testing.T) {
 	t.Parallel()
+
 	for _, input := range []struct {
 		name string
 		data string
@@ -54,10 +55,12 @@ func TestUnmarshalRideInvalidInput(t *testing.T) {
 
 func TestMarshalRideUnsupportedValue(t *testing.T) {
 	t.Parallel()
+
 	data, err := MarshalRide(&Ride{Price: math.NaN()})
 	if err == nil {
 		t.Fatal("expected an encoding error for NaN")
 	}
+
 	if data != nil {
 		t.Errorf("data = %q, want nil on error", data)
 	}
